@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Dokter</title>
+    <link rel="stylesheet" th:href="@{/css/notif.css}">
+    <link rel="stylesheet" th:href="@{/css/dokter.css}">
+</head>
+
+
+<body>
+    <div id="notifPanel" class="notif-panel">
+        Selamat datang, <span th:text="${session.userEmail}">email@domain.com</span>!
+    </div>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <h2>Doctor Menu</h2>
+
+            <div class="menu-top">
+                <button id="btnPasien">1. Data Pasien</button>
+                <button id="btnObat">2. Data Obat</button>
+                <button id="btnDokter">3. Data Diri</button>
+            </div>
+
+            <div class="menu-bottom">
+                <a href="/logout"><button id="btnKeluar">Keluar</button></a>
+            </div>
+        </div>
+
+        <!-- CONTENT (kosong, diisi lewat JS) -->
+        <div id="content-panel" class="content"></div>
+
+    </div>
+
+    <!-- =============================
+         PLACEHOLDER AWAL (HIDDEN)
+    =============================== -->
+    <div id="content-initial" style="display:none;">
+        <div class="content-placeholder">
+            <div class="placeholder-box">
+                <h2>Selamat datang, Dokter</h2>
+                <p>Silakan pilih menu di sebelah kiri untuk melihat data pasien, obat, atau data diri Anda.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================
+     DATA PASIEN (HIDDEN)
+=============================== -->
+    <div id="content-pasien" style="display:none;">
+        <h2>Data Pasien</h2>
+
+        <div class="pasien-table-wrapper">
+
+            <table class="table-pasien">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pasien</th>
+                        <th>Nama Dokter</th>
+                        <th>Jam</th>
+                        <th>No Tiket</th>
+                    </tr>
+                </thead>
+
+                <tbody th:each="a, no : ${appointmentList}">
+                    <tr class="pasien-row">
+                        <td th:text="${no.count}"></td>
+                        <td th:text="${a.pasien.nama}"></td>
+                        <td th:text="${a.dokter.nama}"></td>
+                        <td th:text="${a.jam}"></td>
+                        <td th:text="${a.pasien.tiket != null ? a.pasien.tiket.noTiket : 'Belum ada tiket'}"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="aksi-container">
+                <a th:href="@{/obat}" class="btn-masuk-obat">Masukkan Obat</a>
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================
+         DATA OBAT (HIDDEN)
+    =============================== -->
+        <div id="content-obat" style="display:none;">
+            <h2>Data Obat</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Obat</th>
+                        <th>Nama Obat</th>
+                        <th>Pemakaian Obat</th>
+                        <th>Harga Obat</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="o : ${dataObat}">
+                        <td th:text="${o.idObat}"></td>
+                        <td th:text="${o.namaObat}"></td>
+                        <td th:text="${o.pemakaianObat}"></td>
+                        <td th:text="${o.hargaObat}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- =============================
+         DATA DOKTER (HIDDEN)
+    =============================== -->
+        <div id="content-dokter" style="display:none;">
+            <div class="dokter-card">
+                <h2>Data Diri Dokter</h2>
+
+                <p><strong>Spesialis :</strong>
+                    <span th:text="${dataDokter != null ? dataDokter.spesialis : 'Belum diisi'}"></span>
+                </p>
+
+                <p><strong>Kontak :</strong>
+                    <span th:text="${dataDokter != null ? dataDokter.kontakDokter : 'Belum diisi'}"></span>
+                </p>
+            </div>
+        </div>
+
+
+        <script th:src="@{/js/dokter.js}"></script>
+        <script th:src="@{/js/notif.js}"></script>
+
+</body>
+
+</html>

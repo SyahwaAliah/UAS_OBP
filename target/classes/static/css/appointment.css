@@ -1,0 +1,55 @@
+.isi {
+    flex: 1;  
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    padding: 20px 0; 
+}
+
+.appointment {
+    margin-left: 50px;
+}
+
+.appointment h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: aliceblue;
+}
+
+.kotak {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    flex-wrap: wrap;
+}
+
+.appointment .kotak1,
+.appointment .kotak2,
+.appointment .kotak3 {
+    width: 245px;
+    height: 300px;
+    position: relative;
+}
+
+.kotak1 img, .kotak2 img, .kotak3 img {
+    width: 245px;
+    height: 200px;
+    display: block;
+}
+
+.appointment .bawah {
+    position: absolute;
+    width: 245px;
+    height: 100px;
+    z-index: 2;
+    background-color: whitesmoke;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.appointment .bawah h3 {
+    font-size: 22px;
+    padding: 5% 5% 0 5%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}

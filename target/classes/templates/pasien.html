@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" th:href="@{/css/notif.css}">
+    <link rel="stylesheet" th:href="@{/css/dokter.css}">
+    <link rel="stylesheet" th:href="@{/css/pasien.css}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="notifPanel" class="notif-panel">
+        Selamat datang, <span th:text="${session.userEmail}">email@domain.com</span>!
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul> <!-- unordered list/ daftar tanpa urutan(bullet points) -->
+                <li><!-- list item / item dalam daftar -->
+                    <!--home-->
+                    <a href="#" class="nav-link" data-target="home">
+                        <span class="item-icon">
+                            <!-- inline / membungkus bagian kecil teks(mengbungkus 1 kata) dalam baris -->
+                            <i class="bx bx-home-heart"></i> <!-- unntuk cetak garis miring -->
+                        </span>
+                        <span class="item-txt">Home</span>
+                    </a>
+                </li>
+
+                <!-- ABOUT -->
+                <li>
+                    <a href="#" class="nav-link" data-target="about">
+                        <span class="item-icon">
+                            <i class="bx bxs-info-circle"></i>
+                        </span>
+                        <span class="item-txt">About</span>
+                    </a>
+                </li>
+
+                <li>
+                    <!--services-->
+                    <a href="#" class="nav-link" data-target="appointment">
+                        <span class="item-icon">
+                            <i class="bx bxs-shield-plus"></i>
+                        </span>
+                        <span class="item-txt">Services</span>
+                    </a>
+                </li>
+
+                <li>
+                    <!--contact-->
+                    <a href="#" class="nav-link" data-target="contact">
+                        <span class="item-icon">
+                            <i class="bx bxs-contact"></i>
+                        </span>
+                        <span class="item-txt">Contact</span>
+                    </a>
+                </li>
+
+                <!--logout-->
+                <li class="Logout">
+                    <a th:href="@{/Menu}" class="nav-link">
+                        <span class="item-icon">
+                            <i class="bx bxs-log-out"></i>
+                        </span>
+                        <span class="item-txt">Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="content-area">
+            <div id="home" class="page active">
+                <div class="page-layout">
+                    <div class="left-panel">
+                        <img src="/gambar/nimpa.jpg" alt="home 1">
+                    </div>
+
+                    <div class="right-panel">
+                        <h4>Trysellen Klinik</h4>
+                        <h1>Selamat Datang, <span th:text="${pasienInfo.nama}">Pasien</span></h1>
+                        <p>
+                            Tiket No:
+                            <span
+                                th:text="${pasienInfo.tiket != null ? pasienInfo.tiket.noTiket : 'Belum Ada Tiket'}"></span>
+                        </p>
+
+                        <button id="readMoreBtn">Read more</button>
+
+                        <div id="extraText" class="hidden">
+                            <p>-- Selamat datang dan selamat berinteraksi di web kami! -- </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT PAGE (versi panjang) -->
+            <div id="about" class="page">
+                <div class="page-layout about-layout">
+
+
+
+                    <div class="about-wrapper">
+                        <h1 class="about-title">ABOUT</h1>
+                        <h2 class="about-sub">Trysellen Klinik</h2>
+
+                        <div class="about-box">
+                            <p>
+                                Trysellen Klinik adalah sebuah proyek kolaboratif yang dibangun oleh tiga individu yang
+                                memiliki visi yang sama: menghadirkan layanan kesehatan anak yang ramah, aman, dan
+                                inovatif. Klinik ini dirancang sebagai ruang yang membantu anak merasa nyaman, sekaligus
+                                memudahkan orang tua dalam mendapatkan informasi dan pelayanan kesehatan yang cepat dan
+                                terstruktur.
+                            </p>
+                        </div>
+
+                        <div class="about-group">- Kelompok OBP -</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="appointment" class="page">
+                <div class="appointment">
+                    <div class="appointment-header">
+                        <h1>Appointment</h1>
+
+
+                    </div>
+
+                    <div class="kotak">
+                        <div class="kotak1">
+                            <img src="gambar/ellen.jpg">
+                            <div class="bawah">
+                                <h3>Dr. Suellen</h3>
+                            </div>
+                        </div>
+
+                        <div class="kotak2">
+                            <a href="#"></a>
+                            <img src="gambar/me.jpg">
+                            <div class="bawah">
+                                <h3>Dr. Syahwa</h3>
+                            </div>
+                        </div>
+
+                        <div class="kotak3">
+                            <a href="#"></a>
+                            <img src="gambar/race.jpg">
+                            <div class="bawah">
+                                <h3>Dr. Tracy</h3>
+                            </div>
+                        </div>
+
+                        <div id="formDrA" class="form-modal hidden">
+                            <div class="section" id="updatePasien">
+                                <h2>Update Data Pasien</h2>
+                                <form th:action="@{/pasien/update}" method="post">
+                                    <input type="hidden" name="id" th:value="${pasienInfo.id}" />
+
+                                    <label>Nama:</label>
+                                    <input type="text" name="nama" th:value="${pasienInfo.nama}" required />
+
+                                    <label>Tanggal Lahir:</label>
+                                    <input type="date" name="tanggalLahir" th:value="${pasienInfo.tanggalLahir}"
+                                        required />
+
+                                    <label>Umur:</label>
+                                    <input type="number" name="umur" th:value="${pasienInfo.umur}" required />
+
+                                    <label>Diagnosa:</label>
+                                    <input type="text" name="diagnosa" th:value="${pasienInfo.diagnosa}" required />
+
+                                    <label>Riwayat:</label>
+                                    <input type="text" name="riwayat" th:value="${pasienInfo.riwayat}" required />
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+
+                            <hr />
+
+                            <!-- Section 2: Buat Appointment -->
+                            <div class="section" id="appointment">
+                                <h2>Buat Appointment</h2>
+                                <form th:action="@{/Appointment/Schedule}" method="post">
+                                    <input type="hidden" name="pasienId" th:value="${pasienInfo.id}" />
+
+                                    <label>Pilih Dokter:</label>
+                                    <select name="dokterId" required>
+                                        <option th:each="d : ${dokterList}" th:value="${d.id}" th:text="${d.nama}">
+                                        </option>
+                                    </select>
+
+                                    <label>Jam Appointment:</label>
+                                    <input type="text" name="jam" required />
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="formDrB" class="form-modal hidden">
+                            <div class="section" id="updatePasien">
+                                <h2>Update Data Pasien</h2>
+                                <form th:action="@{/pasien/update}" method="post">
+                                    <input type="hidden" name="id" th:value="${pasienInfo.id}" />
+
+                                    <label>Nama:</label>
+                                    <input type="text" name="nama" th:value="${pasienInfo.nama}" required />
+
+                                    <label>Tanggal Lahir:</label>
+                                    <input type="date" name="tanggalLahir" th:value="${pasienInfo.tanggalLahir}"
+                                        required />
+
+                                    <label>Umur:</label>
+                                    <input type="number" name="umur" th:value="${pasienInfo.umur}" required />
+
+                                    <label>Diagnosa:</label>
+                                    <input type="text" name="diagnosa" th:value="${pasienInfo.diagnosa}" required />
+
+                                    <label>Riwayat:</label>
+                                    <input type="text" name="riwayat" th:value="${pasienInfo.riwayat}" required />
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+
+                            <hr />
+
+                            <!-- Section 2: Buat Appointment -->
+                            <div class="section" id="appointment">
+                                <h2>Buat Appointment</h2>
+                                <form th:action="@{/Appointment/Schedule}" method="post">
+                                    <input type="hidden" name="pasienId" th:value="${pasienInfo.id}" />
+
+                                    <label>Pilih Dokter:</label>
+                                    <select name="dokterId" required>
+                                        <option th:each="d : ${dokterList}" th:value="${d.id}" th:text="${d.nama}">
+                                        </option>
+                                    </select>
+
+                                    <label>Jam Appointment:</label>
+                                    <input type="text" name="jam" required />
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="formDrC" class="form-modal hidden">
+                            <div class="section" id="updatePasien">
+                                <h2>Update Data Pasien</h2>
+                                <form th:action="@{/pasien/update}" method="post">
+                                    <input type="hidden" name="id" th:value="${pasienInfo.id}" />
+
+                                    <label>Nama:</label>
+                                    <input type="text" name="nama" th:value="${pasienInfo.nama}" required />
+
+                                    <label>Tanggal Lahir:</label>
+                                    <input type="date" name="tanggalLahir" th:value="${pasienInfo.tanggalLahir}"
+                                        required />
+
+                                    <label>Umur:</label>
+                                    <input type="number" name="umur" th:value="${pasienInfo.umur}" required />
+
+                                    <label>Diagnosa:</label>
+                                    <input type="text" name="diagnosa" th:value="${pasienInfo.diagnosa}" required />
+
+                                    <label>Riwayat:</label>
+                                    <input type="text" name="riwayat" th:value="${pasienInfo.riwayat}" required />
+                                    <button type="submit">Update</button>
+                                </form>
+                            </div>
+
+                            <hr />
+
+                            <!-- Section 2: Buat Appointment -->
+                            <div class="section" id="appointment">
+                                <h2>Buat Appointment</h2>
+                                <form th:action="@{/Appointment/Schedule}" method="post">
+                                    <input type="hidden" name="pasienId" th:value="${pasienInfo.id}" />
+
+                                    <label>Pilih Dokter:</label>
+                                    <select name="dokterId" required>
+                                        <option th:each="d : ${dokterList}" th:value="${d.id}" th:text="${d.nama}">
+                                        </option>
+                                    </select>
+
+                                    <label>Jam Appointment:</label>
+                                    <input type="text" name="jam" required />
+
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div> <!-- div penutup kotak -->
+                </div> <!-- div penutup class appointment -->
+            </div> <!-- div penutup id appointment -->
+
+            <!-- CONTACT -->
+            <div id="contact" class="page">
+                <div class="contact-layout">
+
+                    <h1 class="contact-title">Contact</h1>
+
+                    <div class="photo-stack">
+
+                        <!-- 6 foto tumpuk -->
+                        <div class="photo"><img src="gambar/rer.jpg"></div>
+                        <div class="photo"><img src="gambar/call.jpg"></div>
+                        <div class="photo"><img src="gambar/none.jpg"></div>
+                        <div class="photo"><img src="gambar/what.jpg"></div>
+                        <div class="photo"><img src="gambar/nathan.jpg"></div>
+                        <div class="photo"><img src="gambar/eva.jpg"></div>
+
+                    </div>
+
+                    <p class="contact-text">
+                        Contact (Kelompok OBP Klinik)<br>
+                        Suellen Abelvia : 825240025<br>
+                        Tracy Prycillia Kusmana : 825240099<br>
+                        Syahwa Aliah Wandi : 825240139
+                    </p>
+
+
+                </div>
+            </div><!-- div penutup contact -->
+        </div> <!-- penutup content-area -->
+    </div> <!-- penutup container -->
+
+    <div id="modalBackdrop" class="modal-backdrop hidden"></div>
+
+    <script src="/js/menu.js"></script>
+    <script src="/js/appointment.js"></script>
+    <script src="/js/notif.js"></script>
+
+</body>
+
+</html>

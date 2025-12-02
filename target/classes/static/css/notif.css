@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-heading: "Unbounded", sans-serif;
+    --font-body: "Urbanist", sans-serif;
+}
+
+.notif-panel {
+    position: fixed;
+    top: -80px; 
+    right: 20px;
+    padding: 14px 24px;
+
+    background: linear-gradient(135deg, #ffffff, #f5d8ff);
+    color: rgb(174, 197, 109);
+    
+    font-family: var(--font-heading);
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 8px rgba(0,0,0,0.12),
+        0 8px 18px rgba(0,0,0,0.15),
+        inset 0 0 10px rgba(255,255,255,0.8);
+
+    border: 2px solid rgba(255,255,255,0.7);
+
+    z-index: 999;
+    opacity: 0;
+    transition: 
+        top 0.55s cubic-bezier(.25,.8,.25,1),
+        opacity 0.45s ease;
+}
+
+.notif-panel.show {
+    top: 25px;
+    opacity: 1;
+}
+
+.notif-panel p {
+    margin: 0;
+    font-weight: 600;
+}

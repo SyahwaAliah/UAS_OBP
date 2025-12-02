@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-heading: "Unbounded", sans-serif;
+    --font-body: "Urbanist", sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("/gambar/menu.png") center/cover no-repeat fixed;
+    font-family: var(--font-body);
+}
+
+.struk-container {
+    width: 80mm;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.struk-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.struk-header h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+}
+
+.struk-info p {
+    margin: 2px 0;
+    font-size: 12px;
+}
+
+h4 {
+    margin: 8px 0;
+    font-size: 13px;
+    font-family: var(--font-heading);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+th, td {
+    border-bottom: 1px dashed #aaa;
+    padding: 3px;
+    text-align: left;
+}
+
+th {
+    font-weight: 600;
+}
+
+.total-row td {
+    border-top: 1px solid #000;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        background: none !important;
+        display: block;
+    }
+
+    .struk-container {
+        width: 80mm !important;
+        padding: 10px !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        border-radius: 0;
+    }
+
+    button {
+        display: none !important;
+    }
+}

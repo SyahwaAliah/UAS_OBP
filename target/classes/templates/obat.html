@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Pasien & Obat</title>
+    <link rel="stylesheet" th:href="@{/css/obat.css}">
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- STEP / SIDEBAR -->
+        <div class="step-sidebar">
+            <button id="stepPasien" class="step-pill step-active">
+                <span class="step-number">1.</span>
+                <span>Pilih Pasien</span>
+                <span class="step-check">✓</span>
+            </button>
+
+            <button id="stepObat" class="step-pill">
+                <span class="step-number">2.</span>
+                <span>Pilih Obat</span>
+            </button>
+        </div>
+
+        <!-- MAIN AREA -->
+        <div class="main-panel">
+
+            <h1 class="page-title">Obat</h1>
+
+            <!-- ROW DROPDOWN -->
+            <div class="select-row">
+                <!-- Pilih Pasien -->
+                <div class="select-group">
+                    <label for="pasienDropdown" class="field-label">Pilih Pasien</label>
+                    <select id="pasienDropdown" class="dropdown">
+                        <option value="">Pilih Pasien</option>
+                        <option th:each="p : ${listPasien}" th:value="${p.id}"
+                            th:text="'Pasien ' + ${p.id} + ' (Umur: ' + ${p.umur} + ')'">
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Pilih Obat -->
+                <div class="select-group">
+                    <label for="obatDropdown" class="field-label">Pilih Obat</label>
+                    <select id="obatDropdown" class="dropdown">
+                        <option value="">Pilih Obat</option>
+                        <option th:each="o : ${listObat}" th:value="${o.idObat}" th:data-nama="${o.namaObat}"
+                            th:data-pemakaian="${o.pemakaianObat}" th:data-harga="${o.hargaObat}"
+                            th:text="${o.namaObat}">
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ROW CARD INFO -->
+            <div class="info-row">
+                <!-- Card Pasien -->
+                <div class="info-card">
+                    <h3 class="card-title">Pasien</h3>
+                    <p id="pasienInfoText" class="card-text">
+                        Belum ada pasien yang dipilih
+                    </p>
+                </div>
+
+                <!-- Card Detail Obat -->
+                <div class="info-card" id="detail-obat">
+                    <h3 class="card-title">Detail Obat</h3>
+                    <p class="card-text">
+                        Pilih obat untuk melihat detail
+                    </p>
+                </div>
+            </div>
+
+            <!-- ROW BUTTON -->
+            <div class="actions-row">
+                <button id="nextButton" class="btn-next" disabled>
+                    Simpan & Lanjut
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =========================
+     FORM HIDDEN TRANSAKSI
+========================= -->
+    <form id="transaksiForm" th:action="@{/transaksi/save}" method="post">
+        <input type="hidden" name="id_pasien" id="id_pasien_field">
+        <input type="hidden" name="id_obat" id="id_obat_field">
+        <input type="hidden" name="id_appointment" id="id_appointment_field">
+    </form>
+
+    <script th:src="@{/js/obat.js}"></script>
+
+</body>
+
+</html>

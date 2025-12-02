@@ -1,0 +1,16 @@
+.dropdown {
+    width: 200px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.btn-next {
+    padding: 5px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+}

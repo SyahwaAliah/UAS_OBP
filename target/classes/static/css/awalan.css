@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-heading: "Unbounded", sans-serif;
+    --font-body: "Urbanist", sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-body);
+
+    background: url('/gambar/menu.png') no-repeat center center;
+    background-size: cover;
+    animation: bgMove 45s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+    0% { background-position: 50% 50%; transform: scale(1); }
+    50% { background-position: 51.5% 45.5%; transform: scale(1.015); }
+    100% { background-position: 50% 50%; transform: scale(1); }
+}
+
+.brand-title {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 1.7em;
+    font-weight: 700;
+    color: #3c4eee;
+    z-index: 5;
+    font-family: var(--font-heading);
+}
+
+.bg-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.center-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.welcome-title {
+    color: #3c4eee;
+    font-size: 3.2em;
+    font-weight: 800;
+    margin: 0;
+    font-family: var(--font-heading);
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #3c4eee;
+    font-size: 1.2em;
+    font-family: var(--font-body);
+}
+
+.btn-regist {
+    margin-top: 25px;
+    display: inline-block;
+    padding: 12px 38px;
+    border-radius: 50px;
+    border: 2px solid #3c4eee;
+    background: white;
+    font-size: 1.2em;
+    color: #3c4eee;
+    text-decoration: none;
+    transition: 0.25s;
+    font-family: var(--font-heading);
+}
+
+.btn-regist:hover {
+    background: #3c4eee;
+    color: white;
+}
+
+.char {
+    position: absolute;
+    width: 280px;
+    animation: wiggle 3.2s infinite alternate ease-in-out;
+}
+
+.char-top-left { top: 80px; left: 100px; }
+.char-top-right { top: 70px; right: 100px; }
+.char-bottom-left { bottom: 10px; left: 140px; }
+
+@keyframes wiggle {
+    0% { transform: translateX(-10px) rotate(-1deg); }
+    100% { transform: translateX(10px) rotate(1.5deg); }
+}
