@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Print Struk</title>
+    <link rel="stylesheet" th:href="@{/css/transaksi.css}">
+    <script>
+        window.onload = function () {
+            window.print();
+        }
+    </script>
+</head>
+
+<body>
+    <div class="struk-container">
+        <div class="struk-header">
+            <h3>Trysellen Clinic</h3>
+            <small>Struk Transaksi</small>
+        </div>
+
+        <div class="struk-info">
+            <p>
+                <strong>ID Transaksi:</strong>
+                <span th:text="${transaksi != null ? transaksi.id_transaksi : '-'}">-</span>
+            </p>
+
+            <p>
+                <strong>Appointment ID:</strong>
+                <span
+                    th:text="${transaksi != null and transaksi.appointment != null ? transaksi.appointment.id : '-'}">-</span>
+            </p>
+
+            <p>
+                <strong>Total Transaksi:</strong>
+                Rp <span th:text="${transaksi != null ? transaksi.total_transaksi : '-'}">-</span>
+            </p>
+        </div>
+
+        <h4>Daftar Obat</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Obat</th>
+                    <th>Qty</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <!-- kalau ada obat -->
+            <tbody th:if="${obat != null}">
+                <tr>
+                    <td>1</td>
+                    <td th:text="${obat.namaObat}">Nama Obat</td>
+                    <td th:text="${obat.pemakaianObat}">Pemakaian</td>
+                    <td th:text="${obat.hargaObat}">0</td>
+                </tr>
+            </tbody>
+
+            <!-- kalau tidak ada obat -->
+            <tbody th:if="${obat == null}">
+                <tr>
+                    <td colspan="3" style="text-align:center;">Belum ada data obat</td>
+                </tr>
+            </tbody>
+
+            <tr class="total-row">
+                <td colspan="2">Total</td>
+                <td th:text="${transaksi.total_transaksi}">0</td>
+            </tr>
+        </table>
+
+        <p style="text-align:center; margin-top:10px;">
+            Terima kasih dan semoga lekas sembuh.
+        </p>
+
+        <!-- Tombol back kalau user batal print -->
+        <button type="button" th:onclick="|window.location.href='/transaksi?id=' + ${transaksi.id_transaksi}|">
+            Kembali
+        </button>
+
+    </div>
+</body>
+
+</html>

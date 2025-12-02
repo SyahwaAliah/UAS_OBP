@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Struk Transaksi</title>
+    <link rel="stylesheet" th:href="@{/css/transaksi.css}">
+</head>
+
+<body>
+    <div class="struk-container">
+        <h2>Struk Transaksi</h2>
+
+        <p>
+            <strong>ID Transaksi:</strong>
+            <span th:text="${transaksi != null ? transaksi.id_transaksi : '-'}">-</span>
+        </p>
+
+        <p>
+            <strong>Appointment ID:</strong>
+            <span
+                th:text="${transaksi != null and transaksi.appointment != null ? transaksi.appointment.id : '-'}">-</span>
+        </p>
+
+        <p>
+            <strong>Total Transaksi:</strong>
+            Rp <span th:text="${transaksi != null ? transaksi.total_transaksi : '-'}">-</span>
+        </p>
+
+
+        <h3>Daftar Obat:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Obat</th>
+                    <th>Pemakaian</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+
+            <!-- kalau ada obat -->
+            <!-- kalau ada obat -->
+            <tbody th:if="${obat != null}">
+                <tr>
+                    <td>1</td>
+                    <td th:text="${obat.namaObat}">Nama Obat</td>
+                    <td th:text="${obat.pemakaianObat}">Pemakaian</td>
+                    <td th:text="${obat.hargaObat}">0</td>
+                </tr>
+            </tbody>
+
+            <!-- kalau tidak ada obat -->
+            <tbody th:if="${obat == null}">
+                <tr>
+                    <td colspan="4" style="text-align:center;">Belum ada data obat</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <!-- PILIHAN SESUAI / TIDAK -->
+        <form th:if="${transaksi != null}" th:action="@{/transaksi/check}" method="post" style="margin-top:20px;">
+            <input type="hidden" name="id" th:value="${transaksi.id_transaksi}">
+
+            <button type="submit" name="status" value="sesuai" class="btn-green">
+                ✔ Obat Sesuai – Print Struk
+            </button>
+
+            <button type="submit" name="status" value="tidak" class="btn-red">
+                ✖ Obat Tidak Sesuai – Kembali ke Pasien
+            </button>
+        </form>
+
+    </div>
+</body>
+
+</html>

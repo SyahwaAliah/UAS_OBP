@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notif.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dokter.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pasien.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="notif-panel" th:if="${param.notif}">
+        <p th:text="${param.notif}"></p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul> <!-- unordered list/ daftar tanpa urutan(bullet points) -->
+                <li><!-- list item / item dalam daftar -->
+                    <!--Memilih dokter dan melihat Appointment-->
+                    <a href="#" class="nav-link" data-target="home">
+                        <span class="item-icon">
+                            <!-- inline / membungkus bagian kecil teks(mengbungkus 1 kata) dalam baris -->
+                            <i class="bx bx-home-heart"></i> <!-- unntuk cetak garis miring -->
+                        </span>
+                        <span class="item-txt">Melihat dokter dan Appointment</span>
+                    </a>
+                </li>
+
+                <!--Melihat obat-->
+                <li>
+                    <a href="#" class="nav-link" data-target="about">
+                        <span class="item-icon">
+                            <i class="bx bxs-info-circle"></i>
+                        </span>
+                        <span class="item-txt">Melihat Obat</span>
+                    </a>
+                </li>
+
+                <li>
+                    <!--Melakukan Transaksi-->
+                    <a th:href="@{/transaksi}" class="nav-link">
+                        <span class="item-icon">
+                            <i class="bx bxs-shield-plus"></i>
+                        </span>
+                        <span class="item-txt">Melakukan Transaksi</span>
+                    </a>
+                </li>
+
+                <li>
+                    <!--keluar-->
+                    <a th:href="@{/pasien}" class="nav-link">
+                        <span class="item-icon">
+                            <i class="bx bxs-contact"></i>
+                        </span>
+                        <span class="item-txt">Keluar</span>
+                    </a>
+                </li>
+
+                <!--logout-->
+                <li class="Logout">
+                    <a th:href="@{/Menu}" class="nav-link">
+                        <span class="item-icon">
+                            <i class="bx bxs-log-out"></i>
+                        </span>
+                        <span class="item-txt">Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="content-area">
+            <div id="home" class="page active">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Pasien</th>
+                            <th>Nama Dokter</th>
+                            <th>Jam</th>
+                            <th>Tiket</th>
+                        </tr>
+                    </thead>
+
+                    <tbody th:each="a, no : ${appointmentList}">
+                        <tr>
+                            <td th:text="${no.count}"></td>
+                            <td th:text="${a.pasien.nama}"></td>
+                            <td th:text="${a.dokter.nama}"></td>
+                            <td th:text="${a.jam}"></td>
+                            <td th:text="${a.pasien.tiket != null ? a.pasien.tiket.noTiket : 'Belum Ada'}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="about" class="page">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Id Obat</th>
+                        <th>Nama Obat</th>
+                        <th>Pemakaian Obat</th>
+                        <th>Harga Obat</th>
+                    </tr>
+                </thead>
+
+                <tbody th:each="o, no : ${ObatList}">
+                    <tr>
+                        <td th:text="${o.idObat}"></td>
+                        <td th:text="${o.namaObat}"></td>
+                        <td th:text="${o.pemakaianObat}"></td>
+                        <td th:text="${o.hargaObat}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div id="appointment" class="page">
+            <form th:action="@{/MenuPasien/PilihDokter}" method="post">
+                <select name="dokterId">
+                    <option th:each="d : ${DokterList}" th:value="${d.id}" th:text="${d.nama}"></option>
+                </select>
+                <button type="submit">Lanjut Melakukan Transaksi</button>
+            </form>
+        </div>
+    </div> -->
+
+        <script src="/js/menu.js"></script>
+        <script src="/js/notif.js"></script>
+
+</body>
+
+</html>

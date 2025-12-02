@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --font-heading: "Unbounded", sans-serif;
+    --font-body: "Urbanist", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 25%;
+    background: linear-gradient(to bottom, #3c4eee, #ffffff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-family: var(--font-heading);
+}
+
+.menu-top button,
+.menu-bottom button {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.25s ease;
+}
+
+.menu-top button:hover,
+.menu-bottom button:hover {
+    background: #42a5f5;
+    transform: translateX(2px);
+}
+
+.menu-top button.active {
+    background: #42a5f5;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+}
+
+.content {
+    width: 75%;
+    background: #f5f5f5;
+    padding: 24px 32px;
+    overflow-y: auto;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.content.is-fading {
+    opacity: 0;
+}
+
+.content-placeholder {
+    height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 60px;
+    background: radial-gradient(circle at top left, #e3f2fd 0, transparent 55%),
+                radial-gradient(circle at bottom right, #fff3e0 0, transparent 55%);
+    border-radius: 18px;
+}
+
+.placeholder-box {
+    text-align: center;
+    background: white;
+    padding: 18px 26px;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e3f2fd;
+}
+
+.placeholder-box h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-family: var(--font-heading);
+}
+
+.placeholder-box p {
+    margin: 0;
+    font-size: 15px;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #1976d2;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #e0e0e0;
+}
+
+.content table td:last-child {
+    text-align: right;
+}
+
+.btn-masuk-obat {
+    display: inline-block;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 999px;
+    background: #1976d2;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-masuk-obat:hover {
+    background: #42a5f5;
+    transform: translateY(-1px);
+}
+
+#content-obat table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+#content-obat th:first-child {
+    border-top-left-radius: 14px;
+}
+
+#content-obat th:last-child {
+    border-top-right-radius: 14px;
+}
+
+#content-dokter {
+    display: block;
+}
+
+.dokter-card {
+    max-width: 420px;
+    background: #fffdf5;
+    border-radius: 20px;
+    padding: 22px 26px;
+    margin-top: 30px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+    border-left: 6px solid #ffb3c1;
+}
+
+.dokter-card h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 24px;
+    font-family: var(--font-heading);
+}
+
+.dokter-card p {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.dokter-card strong {
+    font-weight: 700;
+}
+
+.pasien-table-wrapper {
+    position: relative;
+}
+
+.pasien-row {
+    position: relative;
+}
+
+.btn-aksi-outside {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1976d2;
+    color: white;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.btn-aksi-outside:hover {
+    background: #42a5f5;
+}
+
+.aksi-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-masuk-obat {
+    background: #1976d2;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.btn-masuk-obat:hover {
+    background: #0d47a1;
+}

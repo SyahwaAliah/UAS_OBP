@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(151, 204, 250);
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  border: none;
+  /* border-radius: 40px; */
+  box-shadow: 0 0 15px rgba(251, 250, 250, 0.97),
+      -10px -20px 20px rgba(255, 255, 255, 0.5);
+  background-color: rgb(237, 214, 214);
+  display: flex;
+}
+
+.sidebar {
+  width: 60px;
+  height: 100%;
+  background-color: #f1a9da;
+  padding: 20px;
+  box-sizing: border-box;
+  color: azure;
+  overflow: hidden;
+  border-radius: 5px 0 0 5px;
+  transition: width .75s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  flex: 1;
+}
+
+li {
+  padding: 10px 10px;
+  border-bottom: 3px solid rgb(230, 109, 200);
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+li:hover {
+  background-color: #f2e2ef;
+}
+
+.logout {
+  margin-top: 100px;
+}
+
+.nav-link {
+  display: inline-flex;
+  column-gap: 1rem;
+  color: rgb(190, 28, 98);
+  text-decoration: none;
+}
+
+.item-txt {
+  padding-left: .5rem;
+}
+
+.Logout {
+  margin-top: auto;
+}
+
+.isi {
+  flex: 1;
+  /* mengambil ruang sisa di samping sidebar */
+  display: flex;
+  flex-direction: column;
+  /* untuk h1 di atas dan kotak dibawh */
+  align-items: center;
+  padding: 20px 0;
+}
+
+.isi .appointment h1,
+.isi .contact h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 36px;
+  color: aliceblue;
+}
+
+.kotak {
+  display: flex;
+  justify-content: center;
+  /* sejajar di tengah */
+  gap: 100px;
+  /* jarak antar kotak */
+  flex-wrap: wrap;
+  /* kotak bisa wrap jika layar kecil */
+}
+
+.appointment .kotak1,
+.appointment .kotak2,
+.appointment .kotak3 {
+  width: 245px;
+  height: 300px;
+}
+
+.kotak1 img,
+.kotak2 img,
+.kotak3 img {
+  width: 280px;
+  height: 300px;
+  display: block;
+}
+
+.kotak1:hover,
+.kotak2:hover,
+.kotak3:hover {
+  transform: scale(1.1);
+}
+
+.appointment .bawah {
+  width: 280px;
+  height: 110px;
+  background-color: whitesmoke;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* Bayangan digeser 4px ke kanan, 4x ke bawah, 
+  Blur 10px, Warna hitam transparan */
+}
+
+.appointment .bawah h3 {
+  font-size: 22px;
+  padding: 5% 5% 0 5%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* center horizontal */
+}
+
+.contact img {
+  display: block;
+  /* agar margin auto bisa bekerja */
+  height: 80vh;
+  width: 1000px;
+}
+
+.nav-link {
+  display: inline-flex;
+  color: rgb(190, 28, 98);
+  text-decoration: none;
+  column-gap: 1rem;
+}
+
+.item-txt {
+  padding-left: .5rem;
+}
+
+.content-area {
+  flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  height: 100%;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-layout {
+  display: flex;
+  height: 100%;
+}
+
+.left-panel {
+  flex: 1;
+  border-right: 4px solid #a0ffa0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.left-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.right-panel {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel h4 {
+  color: #D253A0;
+  margin-bottom: 10px;
+}
+
+.right-panel h1 {
+  color: #E74ABB;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.right-panel p {
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+button {
+  background: none;
+  border: 2px solid #E74ABB;
+  padding: 10px 25px;
+  color: #E74ABB;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ffe4f7;
+}
+
+.hidden {
+  display: none;
+}
+
+.about-layout {
+  padding: 0px -300px;
+  width: 700%;
+  height: 100%;
+}
+
+
+.about-title {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: 90px;
+  color: #2e73c6;
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+.about-subtitle {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: 55px;
+  color: #e64fa6;
+  margin-bottom: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.about-text {
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #333;
+  margin: 30px 0 40px;
+  line-height: 1.6;
+}
+
+
+.about-group {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: 50px;
+  color: #63c45d;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    padding: 40px;
+  }
+
+  .about-title {
+    font-size: 60px;
+  }
+
+  .about-subtitle {
+    font-size: 38px;
+  }
+
+  .about-text {
+    font-size: 18px;
+  }
+
+  .about-group {
+    font-size: 36px;
+  }
+}
