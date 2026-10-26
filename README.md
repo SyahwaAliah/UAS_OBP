@@ -19,8 +19,6 @@ Website klinik anak **Trysellen Klinik** yang memiliki dua sudut pandang penggun
 - Mengisi hasil pemeriksaan, diagnosis, dan resep
 - Mengelola jadwal praktik
 
-> Sesuaikan daftar fitur di atas dengan fitur yang benar-benar sudah dibuat.
-
 ---
 
 ## 🛠 Teknologi
