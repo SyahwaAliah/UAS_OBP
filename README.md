@@ -122,9 +122,9 @@ UAS_OBP/
 
 ## 👩‍💻 Pembuat
 
-**Suellen Abelvia**
-**Tracy Prycillia Kusmana**
-**Syahwa Aliah Wandi**
+- **Suellen Abelvia**
+- **Tracy Prycillia Kusmana**
+- **Syahwa Aliah Wandi**
 GitHub: [@SyahwaAliah](https://github.com/SyahwaAliah)
 
 ---
